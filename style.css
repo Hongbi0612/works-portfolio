@@ -213,6 +213,11 @@ a { color: inherit; text-decoration: none; }
 .screen figcaption { font-size: .88rem; color: var(--text2); text-align: center; line-height: 1.5; max-width: 260px; }
 .screens-note { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
 
+.road-note { font-size: .96rem; color: var(--text2); margin-bottom: 1rem; max-width: 720px; }
+.road-list { list-style: none; display: flex; flex-wrap: wrap; gap: .7rem; }
+.road-list li { font-size: .92rem; color: var(--text); background: var(--surface); border: 1px dashed var(--border-lt); border-radius: 12px; padding: .7rem 1.1rem; position: relative; padding-left: 2.1rem; }
+.road-list li::before { content: "🔜"; position: absolute; left: .8rem; top: 50%; transform: translateY(-50%); font-size: .95rem; }
+
 .detail-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1rem; padding-top: 1.6rem; border-top: 1px solid var(--border); }
 .detail-nav a { font-size: .9rem; color: var(--text2); font-weight: 600; transition: color .2s; }
 .detail-nav a:hover { color: var(--text); }

@@ -23,6 +23,7 @@ const I18N = {
   "detail.bg": { ko: "왜 만들었나", jp: "なぜ作ったか" },
   "detail.decisions": { ko: "기획 포인트", jp: "企画のポイント" },
   "detail.screens": { ko: "실제로 어떻게 움직이나", jp: "実際にどう動くか" },
+  "detail.roadmap": { ko: "앞으로 (구현 예정)", jp: "今後（実装予定）" },
   "detail.about": { ko: "개요", jp: "概要" },
   "detail.platform": { ko: "플랫폼", jp: "プラットフォーム" },
   "detail.stack": { ko: "기술", jp: "技術" },
@@ -168,8 +169,18 @@ const PROJECTS = [
       jp: "ペットとの記憶を時間軸の連載作品として残すウェブアプリ"
     },
     background: {
-      ko: "반려동물과의 순간은 사진첩 어딘가에 흩어진 채 잊혀집니다. 기존 앱들은 ‘건강 기록’, ‘단발성 AI 사진 변환’, ‘커뮤니티’로 쪼개져 있어서, 정작 ‘우리 아이와의 이야기’를 시간 순서로 쌓아두는 곳이 없었어요. 그래서 잊기 전에, 가볍게, 자주 기록하게 만드는 걸 목표로 삼았습니다.",
-      jp: "ペットとの瞬間は、アルバムのどこかに散らばったまま忘れられていきます。既存アプリは「健康記録」「単発のAI写真変換」「コミュニティ」に分かれていて、肝心の『うちの子との物語』を時間順に積み上げる場所がありませんでした。だから、忘れる前に、気軽に、こまめに記録できることを目標にしました。"
+      ko: "반려동물이 곁을 떠났을 때의 그리움은 생각보다 큽니다. 그런데 함께한 순간들은 사진첩 여기저기에 흩어진 채 점점 흐려지죠. ‘더 자주, 더 많이 남겨둘걸’ 하는 후회를 줄이고 싶었습니다. 그래서 거창한 기록이 아니라, 잊기 전에 가볍게·자주 남기는 것을 목표로 삼았어요. 기존 앱들이 ‘건강 기록’, ‘AI 사진 변환’, ‘커뮤니티’로 나뉘어 있던 것과 달리, 함께한 이야기를 시간 순서로 한곳에 쌓아두는 데 집중했습니다.",
+      jp: "ペットが旅立ったときの寂しさは、思ったより大きいものです。けれど一緒に過ごした瞬間は、アルバムのあちこちに散らばったまま少しずつ薄れていきます。『もっと頻繁に、もっとたくさん残しておけば』という後悔を減らしたかった。だから大げさな記録ではなく、忘れる前に気軽に・こまめに残すことを目標にしました。既存アプリが「健康記録」「AI写真変換」「コミュニティ」に分かれていたのと違い、一緒の物語を時間順に一箇所へ積み上げることに集中しました。"
+    },
+    roadmap: {
+      note: {
+        ko: "지금은 ‘가볍게 자주 기록하기’에 집중하고 있고, 아래 기능은 나중에 구현할 예정입니다.",
+        jp: "今は『気軽にこまめに記録する』ことに集中していて、下の機能は今後実装予定です。"
+      },
+      items: {
+        ko: ["사진·영상을 만화/일러스트풍으로 바꾸는 AI 변환", "추억을 네컷 만화로 자동 구성"],
+        jp: ["写真・動画をマンガ/イラスト風に変える AI 変換", "思い出を4コマ漫画に自動構成"]
+      }
     },
     decisions: {
       ko: [
@@ -326,6 +337,13 @@ function detailHTML(p) {
       <figcaption>${esc(sc.cap)}</figcaption>
     </figure>`).join("");
 
+  const roadmap = p.roadmap ? `
+      <div class="detail-sec">
+        <h2 class="sec-h">${t(I18N["detail.roadmap"])}</h2>
+        <p class="road-note">${esc(t(p.roadmap.note))}</p>
+        <ul class="road-list">${t(p.roadmap.items).map((i) => `<li>${esc(i)}</li>`).join("")}</ul>
+      </div>` : "";
+
   const links = p.links.map((l) =>
     `<a class="link-btn ${l.primary ? "primary" : ""} ${l.disabled ? "disabled" : ""}"
         href="${l.url}" ${l.disabled ? 'aria-disabled="true"' : 'target="_blank" rel="noopener"'}>${t(l.label)}</a>`
@@ -373,6 +391,8 @@ function detailHTML(p) {
         <div class="screens">${screens}</div>
         <p class="screens-note">${t(I18N["screens.note"])}</p>
       </div>
+
+      ${roadmap}
 
       ${nav}
     </section>`;
