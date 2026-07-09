@@ -100,10 +100,10 @@ const SCREENS = {
         <div class="rd-moon">🌙</div>
         <div class="rd-shelfrow">
           <div class="rd-spine"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div>
-          <div class="rd-hbook c2">토지</div>
+          <div class="rd-hbook"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div>
         </div>
         <div class="rd-shelfrow">
-          <div class="rd-hbook c1">어린 왕자</div>
+          <div class="rd-hbook"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div>
           <div class="rd-spine"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div>
         </div>
         <div class="rd-shelfrow"></div>
@@ -147,9 +147,9 @@ const SCREENS = {
         <div class="rd-card-shelf">
           <div class="rd-shelfrow">
             <div class="rd-spine"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div>
-            <div class="rd-hbook c2">토지</div>
+            <div class="rd-hbook"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div>
           </div>
-          <div class="rd-shelfrow"><div class="rd-hbook c1">어린 왕자</div></div>
+          <div class="rd-shelfrow"><div class="rd-hbook"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div></div>
         </div>
         <div class="rd-card-foot">
           <span class="rd-card-genre">● 기타</span>
