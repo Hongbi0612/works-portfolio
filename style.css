@@ -114,9 +114,32 @@ a { color: inherit; text-decoration: none; }
 .rd-frame { flex: 1; margin: 0 12px 8px; background: #140a30; border: 2px solid #6d4bd6; border-radius: 12px; position: relative; padding: 8px; display: flex; flex-direction: column; overflow: hidden; }
 .rd-frame.short { flex: none; height: 190px; }
 .rd-moon { position: absolute; top: 8px; right: 12px; font-size: 18px; }
-.rd-shelfrow { flex: 1; border-bottom: 2px solid #3a2a72; position: relative; display: flex; align-items: flex-end; padding: 6px; }
+.rd-shelfrow { flex: 1; border-bottom: 2px solid #3a2a72; position: relative; display: flex; align-items: flex-end; gap: 6px; padding: 6px; }
 .rd-shelfrow:last-child { border-bottom: none; }
-.rd-spine { width: 24px; min-height: 74px; background: linear-gradient(180deg,#a78bfa,#7c5cff); border-radius: 3px 3px 2px 2px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 1px; padding: 6px 0; color: #fff; font-weight: 800; font-size: 10px; box-shadow: -2px 0 4px rgba(0,0,0,.3), inset 2px 0 0 rgba(255,255,255,.25); }
+/* 세로 책등 — 실제 앱처럼 밝은 책등에 '책갈피'가 재미 점수 */
+.rd-spine { width: 26px; min-height: 78px; background: linear-gradient(180deg,#f3eefc,#d9cef2); border-radius: 3px 3px 2px 2px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 4px; padding: 8px 0; box-shadow: -2px 0 4px rgba(0,0,0,.35), inset 2px 0 0 rgba(255,255,255,.5); }
+.rd-mk { width: 9px; height: 13px; background: #ef5b6b; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%); box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+/* 가로 책 — 눕혀 꽂은 책 */
+.rd-hbook { height: 26px; min-width: 66px; border-radius: 3px; display: flex; align-items: center; padding: 0 8px; font-size: 9px; font-weight: 700; color: #3a2a1a; box-shadow: 0 3px 8px rgba(0,0,0,.4), inset 0 2px 0 rgba(255,255,255,.35); align-self: flex-end; }
+.rd-hbook.c1 { background: linear-gradient(120deg,#f6e08a,#e9c34a); }
+.rd-hbook.c2 { background: linear-gradient(120deg,#cfe4ff,#9fc0ef); }
+.rd-hbook.c3 { background: linear-gradient(120deg,#ffd9c2,#f2a97f); }
+/* SNS 공유 카드 화면 */
+.rd-cardview { background: #05030f; align-items: center; justify-content: center; padding: 18px 16px; }
+.rd-cardclose { position: absolute; top: 14px; right: 16px; color: #cfc7f0; font-size: 16px; }
+.rd-card { width: 100%; background: linear-gradient(180deg,#241657,#160d38); border: 1px solid #3a2e6e; border-radius: 16px; padding: 14px; box-shadow: 0 20px 50px -20px rgba(124,92,255,.5); }
+.rd-card-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.rd-card-h { font-size: 15px; color: #fff; font-weight: 800; display: block; }
+.rd-card-date { font-size: 9px; color: #b9a9ff; margin-top: 2px; }
+.rd-card-moon { font-size: 16px; }
+.rd-card-shelf { background: #140a30; border: 1.5px solid #6d4bd6; border-radius: 10px; padding: 6px; display: flex; flex-direction: column; }
+.rd-card-shelf .rd-shelfrow { min-height: 56px; }
+.rd-card-foot { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 10px; }
+.rd-card-genre { font-size: 9px; color: #b3a7dd; }
+.rd-card-count b { font-size: 20px; color: #fff; font-weight: 800; }
+.rd-card-count span { font-size: 9px; color: #9184c6; }
+.rd-card-brand { font-size: 9px; color: #6f64a6; }
+.rd-card-save { margin-top: 14px; width: 100%; background: linear-gradient(100deg,#a78bfa,#7c5cff); color: #fff; font-weight: 700; text-align: center; border-radius: 999px; padding: 11px; font-size: 12px; box-shadow: 0 8px 20px -6px rgba(124,92,255,.6); }
 .rd-tabs { display: flex; justify-content: space-around; text-align: center; padding: 6px 4px 8px; font-size: 8.5px; color: #7a6fb0; border-top: 1px solid #241a4d; }
 .rd-tabs .on { color: #b9a9ff; }
 .rd-dim { opacity: .38; flex: 1; }

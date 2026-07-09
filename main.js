@@ -94,14 +94,18 @@ const SCREENS = {
   "rd-shelf": `
     <div class="ph-app rd">
       <div class="rd-top"><div><div class="rd-ey">BOOKY</div><b class="rd-h">다솜의 책장</b></div><span class="rd-plus">+</span></div>
-      <div class="rd-prog"><span>1권 읽음</span><span>19권 남음 · 5%</span></div>
-      <div class="rd-bar"><i style="width:5%"></i></div>
+      <div class="rd-prog"><span>4권 읽음</span><span>16권 남음 · 20%</span></div>
+      <div class="rd-bar"><i style="width:20%"></i></div>
       <div class="rd-frame">
         <div class="rd-moon">🌙</div>
         <div class="rd-shelfrow">
-          <div class="rd-spine"><span>데</span><span>미</span><span>안</span></div>
+          <div class="rd-spine"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div>
+          <div class="rd-hbook c2">토지</div>
         </div>
-        <div class="rd-shelfrow"></div>
+        <div class="rd-shelfrow">
+          <div class="rd-hbook c1">어린 왕자</div>
+          <div class="rd-spine"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div>
+        </div>
         <div class="rd-shelfrow"></div>
       </div>
       <div class="rd-tabs"><span class="on">📖<br/>서재</span><span>🗂<br/>카드</span><span>🌱<br/>꾸미기</span><span>⚙<br/>설정</span></div>
@@ -131,6 +135,29 @@ const SCREENS = {
         <div class="rd-area">나를 깨뜨리고 나온 새 한 마리.</div>
         <div class="rd-place">책장에 꽂기 📚</div>
       </div>
+    </div>`,
+  "rd-card": `
+    <div class="ph-app rd rd-cardview">
+      <div class="rd-cardclose">✕</div>
+      <div class="rd-card">
+        <div class="rd-card-head">
+          <div><div class="rd-ey">BOOKY</div><b class="rd-card-h">다솜의 책장</b><div class="rd-card-date">2026년 7월 9일</div></div>
+          <span class="rd-card-moon">🌙</span>
+        </div>
+        <div class="rd-card-shelf">
+          <div class="rd-shelfrow">
+            <div class="rd-spine"><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span><span class="rd-mk"></span></div>
+            <div class="rd-hbook c2">토지</div>
+          </div>
+          <div class="rd-shelfrow"><div class="rd-hbook c1">어린 왕자</div></div>
+        </div>
+        <div class="rd-card-foot">
+          <span class="rd-card-genre">● 기타</span>
+          <div class="rd-card-count"><b>4</b> <span>/20권 읽음</span></div>
+          <span class="rd-card-brand">booky.app</span>
+        </div>
+      </div>
+      <div class="rd-card-save">📸 이미지로 저장</div>
     </div>`,
 };
 
@@ -232,21 +259,23 @@ const PROJECTS = [
       jp: "自分の本棚を視覚的に埋め、友達が次の本を薦めてくれる読書記録アプリ"
     },
     background: {
-      ko: "독서 기록 앱은 대부분 ‘데이터베이스 같은 리스트’로 끝납니다. 다 읽고 나면 다시 열지 않게 되죠. 인스타그램의 책장 일러스트 게시물이 좋아요 1.8만·저장 1만을 받는 걸 보고, ‘내 책장을 시각적으로 채우는 재미’와 ‘나를 아는 친구가 다음 책을 추천하는’ 경험에 빈자리가 있다고 봤습니다.",
-      jp: "読書記録アプリの多くは『データベースのようなリスト』で終わります。読み終えると二度と開かなくなる。Instagramの本棚イラスト投稿が「いいね1.8万・保存1万」を集めるのを見て、『自分の本棚を視覚的に埋める楽しさ』と『自分を知る友達が次の本を薦める』体験に空白があると考えました。"
+      ko: "무엇이든 SNS에 공유하고 싶어 하는 요즘이지만, 정작 온전히 ‘내 것’이라 부를 수 있는 공간은 드뭅니다. 인스타그램에서 우연히 본 책장 일러스트에서 힌트를 얻어, 읽은 책으로 나만의 책장을 채워가는 앱을 떠올렸어요. 독서 기록 앱은 대부분 ‘데이터베이스 같은 리스트’로 끝나 다 읽고 나면 다시 열지 않게 되는데, ‘시각적으로 내 책장을 채우는 재미’와 ‘나를 아는 친구가 다음 책을 추천하는’ 경험으로 계속 열어보고 싶은 나만의 공간을 만들고 싶었습니다.",
+      jp: "何でもSNSに共有したい今の時代ですが、本当に『自分だけのもの』と呼べる空間は意外と少ない。Instagramでたまたま見かけた本棚イラストからヒントを得て、読んだ本で自分だけの本棚を埋めていくアプリを思いつきました。読書記録アプリの多くは『データベースのようなリスト』で終わり、読み終えると二度と開かなくなります。『視覚的に本棚を埋める楽しさ』と『自分を知る友達が次の本を薦める』体験で、また開きたくなる自分だけの空間を作りたかったのです。"
     },
     decisions: {
       ko: [
         { point: "리스트가 아니라 ‘시각적 책장’", why: "책이 한 권씩 꽂히는 걸 보는 재미와 꾸미기 애착. 책장이 다 차면 새 책장이 열려서, 자연스러운 시즌·연간 회고가 됩니다." },
+        { point: "실제 책장처럼 세로·가로로 마구잡이로 꽂고, ‘책갈피’로 재미를 표시", why: "진짜 책장을 정리하듯 세로·가로 방향을 자유롭게 골라 꽂게 했어요. 별점(★) 대신 책등에 ‘책갈피’를 꽂아 얼마나 재미있었는지를 남기는, 아날로그 감성의 손맛을 살리고 싶었습니다." },
         { point: "AI 추천이 아니라 ‘친구 추천’", why: "나를 아는 사람이 골라주는 한 권이 알고리즘 추천보다 힘이 셉니다. 사람 사이의 추천을 핵심에 뒀어요." },
-        { point: "웹 공유 링크", why: "앱을 안 깐 친구도 내 책장을 구경할 수 있게. 설치 장벽 없이 퍼지는 바이럴 진입점입니다." },
+        { point: "내 책장을 ‘카드’ 한 장으로 저장해 SNS에 공유", why: "공유하고 싶은 마음을 버튼 한 번으로. 내 책장을 예쁜 카드 이미지로 저장해 인스타 스토리 등에 가볍게 올릴 수 있게 했습니다. (앱 미설치자용 웹 공유 링크도 함께)" },
         { point: "로그인 없이 시작", why: "일단 책장부터 만들고 재미를 느끼게. 원하면 나중에 구글 연동으로 기기 이동에 대비합니다." },
         { point: "한국 책 데이터(카카오 API) + 장르 자동 분류", why: "글로벌 앱이 약한 한국 책 검색과 감성 커버를 채우고, 꽂을 때 장르를 자동 분류해 손이 덜 가게 했어요." }
       ],
       jp: [
         { point: "リストではなく『視覚的な本棚』", why: "本が一冊ずつ挿さる楽しさと、飾る愛着。本棚が埋まると新しい本棚が開き、自然な季節・年間の振り返りになります。" },
+        { point: "本物の本棚のように縦・横に自由に挿し、『しおり』で楽しさを表現", why: "本物の本棚を整えるように、縦・横の向きを自由に選んで挿せるようにしました。星評価(★)の代わりに背表紙へ『しおり』を挿して、どれだけ面白かったかを残す——アナログな手触りを大切にしたかったのです。" },
         { point: "AI推薦ではなく『友達の推薦』", why: "自分を知る人が選ぶ一冊は、アルゴリズム推薦より強い。人と人の推薦を中心に据えました。" },
-        { point: "ウェブ共有リンク", why: "アプリ未インストールの友達も本棚を見られるように。設置障壁なく広がるバイラルの入口です。" },
+        { point: "自分の本棚を『カード』一枚で保存してSNSに共有", why: "共有したい気持ちをワンタップで。自分の本棚をきれいなカード画像として保存し、インスタのストーリーなどに気軽に載せられるようにしました。(未インストールの人向けにウェブ共有リンクも)" },
         { point: "ログインなしで開始", why: "まず本棚を作って楽しさを感じてもらう。必要なら後からGoogle連携で機種変更に備えます。" },
         { point: "韓国の書籍データ(カカオAPI) + ジャンル自動分類", why: "グローバルアプリが弱い韓国書籍の検索と感性的なカバーを補い、挿す時にジャンルを自動分類して手間を減らしました。" }
       ]
@@ -254,15 +283,17 @@ const PROJECTS = [
     screens: {
       ko: [
         { s: "rd-splash", cap: "로그인 없이 바로 시작 — 밤하늘 책장 컨셉" },
-        { s: "rd-shelf", cap: "내 책장에 책이 한 권씩. 진행률·다음 책장" },
+        { s: "rd-shelf", cap: "세로·가로로 자유롭게 꽂은 내 책장. 책등의 ‘책갈피’가 재미 점수" },
         { s: "rd-search", cap: "카카오 책 검색 — 실제 표지·저자로 찾기" },
-        { s: "rd-review", cap: "별점·한줄 소감·꽂는 방향을 정해 꽂기" }
+        { s: "rd-review", cap: "꽂는 방향(세로/가로) + 책갈피로 재미 표시 + 한줄 소감" },
+        { s: "rd-card", cap: "내 책장을 카드 한 장으로 저장해 SNS에 공유" }
       ],
       jp: [
         { s: "rd-splash", cap: "ログインなしですぐ開始 — 夜空の本棚コンセプト" },
-        { s: "rd-shelf", cap: "本棚に一冊ずつ。進捗・次の本棚" },
+        { s: "rd-shelf", cap: "縦・横に自由に挿した本棚。背表紙の『しおり』が楽しさスコア" },
         { s: "rd-search", cap: "カカオ書籍検索 — 実際の表紙・著者で探す" },
-        { s: "rd-review", cap: "評価・一言感想・挿す向きを決めて挿す" }
+        { s: "rd-review", cap: "挿す向き(縦/横) + しおりで楽しさ + 一言感想" },
+        { s: "rd-card", cap: "自分の本棚をカード一枚で保存してSNSに共有" }
       ]
     },
     meta: {
