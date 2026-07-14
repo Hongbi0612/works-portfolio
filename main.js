@@ -159,7 +159,99 @@ const SCREENS = {
       </div>
       <div class="rd-card-save">📸 이미지로 저장</div>
     </div>`,
+
+  /* ---------- pasyamon (Cozy Village) ---------- */
+  "cv-onboarding": `
+    <div class="ph-app cv cv-onboard">
+      <div class="cv-big">🏡</div>
+      <div class="cv-brand">pasyamon</div>
+      <p class="cv-lead">현실에서 마주친 동물·벌레·사람을 사진으로 포착하면,<br/>카드가 되어 나만의 마을에서 살아 움직여요.</p>
+      <label class="cv-olab">마을 이름</label>
+      <div class="cv-oinp">하린이의 숲</div>
+      <label class="cv-olab">마을 테마</label>
+      <div class="cv-themepick"><span class="on">🌳 숲마을</span><span>🗡️ 거친 마을</span><span>❄️ 눈마을</span></div>
+      <div class="cv-cta">🌱 마을 만들기</div>
+      <div class="cv-link">이미 마을이 있나요? 코드로 복구</div>
+    </div>`,
+  "cv-village": `
+    <div class="ph-app cv">
+      <div class="cv-top">
+        <span class="cv-ttl">🏡 하린이의 숲</span><span class="cv-sp"></span>
+        <span class="cv-gbtn">🌳</span><span class="cv-gbtn">☁️</span><span class="cv-gbtn">🎨</span><span class="cv-gbtn">🎴</span>
+        <span class="cv-cap">📷 포착</span>
+      </div>
+      <div class="cv-ground">
+        <span class="cv-deco" style="left:14px;top:16px;font-size:24px">🌳</span>
+        <span class="cv-deco" style="right:16px;top:26px;font-size:22px">🌲</span>
+        <span class="cv-deco" style="left:40%;top:12px">🌻</span>
+        <span class="cv-deco" style="left:20px;bottom:60px">🪨</span>
+        <span class="cv-deco" style="right:30px;bottom:96px">🌸</span>
+        <span class="cv-cre" style="left:30%;top:38%"><span class="cv-body">🐈</span><span class="cv-shadow"></span></span>
+        <span class="cv-cre" style="left:58%;top:30%"><span class="cv-body">🦋</span><span class="cv-shadow"></span></span>
+        <span class="cv-cre leg" style="left:44%;top:56%"><span class="cv-pin">👑</span><span class="cv-body">🐕</span><span class="cv-shadow"></span></span>
+        <span class="cv-cre" style="left:70%;top:60%"><span class="cv-body">🐿️</span><span class="cv-shadow"></span></span>
+        <div class="cv-hint">주민을 탭하면 카드가 열려요 🐾</div>
+      </div>
+    </div>`,
+  "cv-capture": `
+    <div class="ph-app cv cv-stage">
+      <div class="cv-top"><span class="cv-gbtn wide">← 취소</span><span class="cv-ttl2">생명체 카드화</span></div>
+      <div class="cv-stagearea">
+        <div class="cv-rays"></div>
+        <div class="cv-banner">★ 레전더리 ★</div>
+        ${cvCard("r5", "🐈", "?", 5, "#012", "2026.07.14")}
+      </div>
+      <div class="cv-result">
+        <div class="cv-inp">이름 지어주기 (선택)</div>
+        <div class="cv-inp">특징 한 줄 (선택) 예: 낮잠 자던 길냥이</div>
+        <div class="cv-keep">🏡 마을에 보관하기</div>
+      </div>
+    </div>`,
+  "cv-collection": `
+    <div class="ph-app cv">
+      <div class="cv-top"><span class="cv-gbtn wide">← 마을</span><span class="cv-ttl2">🎴 내 컬렉션</span></div>
+      <div class="cv-filter">
+        <span class="cv-chip on">전체</span><span class="cv-chip">5★</span><span class="cv-chip">4★</span><span class="cv-chip">3★</span><span class="cv-chip">2★</span>
+        <span class="cv-sort">최신순 ▾</span>
+      </div>
+      <div class="cv-grid">
+        ${cvMini("r5", "🐈", "레옹", 5)}
+        ${cvMini("r3", "🦋", "나비", 3)}
+        ${cvMini("r2", "🐿️", "도토리", 2)}
+        ${cvMini("r4", "🦆", "꽥이", 4)}
+        ${cvMini("r1", "🐌", "느림", 1)}
+        ${cvMini("r3", "🐝", "붕붕", 3)}
+      </div>
+    </div>`,
+  "cv-detail": `
+    <div class="ph-app cv cv-detailview">
+      ${cvCard("r5", "🐈", "레옹", 5, "#012", "2026.07.14")}
+      <div class="cv-dmeta">
+        <div class="cv-dname">레옹</div>
+        <div class="cv-ddesc">★★★★★ 레전더리 · 12번째 주민</div>
+        <div class="cv-dtraits">낮잠 자던 길냥이</div>
+      </div>
+      <div class="cv-dactions"><span class="cv-dbtn ghost">✏️ 편집</span><span class="cv-dbtn main">닫기</span></div>
+    </div>`,
 };
+
+/* pasyamon 카드/미니카드 헬퍼 (등급 프레임 재현) */
+function cvStars(n) {
+  return "★".repeat(n) + "<span class='cv-star-off'>" + "★".repeat(5 - n) + "</span>";
+}
+function cvCard(rarity, emoji, name, stars, dex, date) {
+  return `<div class="cv-card ${rarity}">
+      <div class="cv-c-head"><span class="cv-c-name">${name}</span><span class="cv-c-stars">${cvStars(stars)}</span></div>
+      <div class="cv-c-art">${emoji}</div>
+      <div class="cv-c-foot"><span>${dex}</span><span>${date}</span></div>
+    </div>`;
+}
+function cvMini(rarity, emoji, name, stars) {
+  return `<div class="cv-mini ${rarity}">
+      <div class="cv-mini-art">${emoji}</div>
+      <div class="cv-mini-b"><span>${name}</span><span class="cv-mini-stars">${cvStars(stars)}</span></div>
+    </div>`;
+}
 
 function rdShelfSVG(size) {
   return `<svg class="rd-illust" width="${size}" height="${size}" viewBox="0 0 100 100" aria-hidden="true">
@@ -305,20 +397,93 @@ const PROJECTS = [
       { label: { ko: "웹 공유 뷰", jp: "ウェブ共有ビュー" }, url: "#", disabled: true },
     ]
   },
+  {
+    id: "pasyamon",
+    name: "pasyamon",
+    theme: "cv",
+    concept: { ko: "사진 포획 힐링 게임", jp: "写真ポケットヒーリングゲーム" },
+    status: "wip",
+    badge: { ko: "프로토타입 검증 중", jp: "プロトタイプ検証中" },
+    hero: "cv-village",
+    heroImg: "images/pasyamon-village.png",
+    tagline: {
+      ko: "길에서 마주친 동물·벌레·사람을 사진으로 찍으면, 배경이 지워진 채 내 마을에 살아 움직이는 주민이 되는 힐링 게임",
+      jp: "道で出会った動物・虫・人を写真に撮ると、背景が消えて自分の村で動き回る住民になるヒーリングゲーム"
+    },
+    background: {
+      ko: "동물의 숲·스타듀밸리 같은 힐링 게임을 좋아하지만, 늘 아쉬웠던 건 마을 주민도 수집물도 결국 ‘개발사가 만들어 정해둔 것’이라는 점이었어요. 나만의 것이 아니죠. 반대로 우리는 매일 길에서 예쁜 길고양이, 날아든 나비, 친구를 마주칩니다. 그 현실의 순간을 사진으로 ‘포획’해 내 세계로 가져오면 어떨까 — 여기서 출발했습니다. ‘수집·도감’ 욕구, ‘나만의 공간 꾸미기’ 욕구, 그리고 ‘현실과 연결된 개인화’를 하나로 묶은 게임이에요. 처음부터 크게 만들기보다, 이 핵심 경험이 정말 재미있는지를 최소 비용으로 먼저 확인하는 데 집중했습니다.",
+      jp: "『あつまれ どうぶつの森』やスターデューバレーのようなヒーリングゲームが好きですが、いつも物足りなかったのは、村の住民も収集物も結局『開発会社が作って決めたもの』だという点でした。自分だけのものではないのです。一方で私たちは毎日、道で可愛い野良猫や飛んできた蝶、友達に出会います。その現実の瞬間を写真で『捕獲』して自分の世界に持ち込めたら——ここから始まりました。『収集・図鑑』欲求、『自分だけの空間を飾る』欲求、そして『現実とつながった個人化』を一つに束ねたゲームです。最初から大きく作るより、この核心体験が本当に面白いかを最小コストでまず確かめることに集中しました。"
+    },
+    decisions: {
+      ko: [
+        { point: "네이티브 앱이 아니라 ‘웹(PWA)’으로 먼저", why: "핵심 재미가 검증되지 않은 단계에서 앱스토어·유료 계정에 투자하는 건 위험합니다. iOS는 무료로 QR 앱 설치가 안 된다는 제약도 있었어요. 그래서 QR→브라우저→홈 화면 추가로 iOS·안드로이드 동시에 돌아가는 PWA로, 운영비 0원에서 가설부터 확인하기로 했습니다." },
+        { point: "배경 제거를 ‘가장 먼저’ 검증했다", why: "‘사진에서 피사체만 오려낸다’가 이 게임의 심장인데, 브라우저에서 그게 빠르고 깔끔하게 될지가 최대 리스크였어요. 그래서 기획을 늘리기 전에 온디바이스(브라우저 안) 배경 제거부터 실험해 ‘된다’를 확인하고 다음으로 넘어갔습니다." },
+        { point: "사진은 전부 기기에만 저장 (완전 로컬)", why: "남의 반려동물, 때로는 사람까지 찍는 게임이라 사진은 곧 개인정보입니다. 서버로 보내지 않고 기기(브라우저) 안에만 저장해 프라이버시 부담과 서버 비용을 동시에 없앴어요." },
+        { point: "클라우드 백업을 넣되 ‘우리도 못 여는’ 방식으로", why: "완전 로컬은 기기를 바꾸면 마을을 잃습니다. 그래서 백업을 추가하되, 내가 정한 PIN으로 종단 암호화해서 저장했어요. PIN 없이는 운영자인 우리조차 열어볼 수 없습니다 — 편의와 프라이버시를 둘 다 지키려는 절충." },
+        { point: "포켓몬 카드처럼 ‘랜덤 별점 + 개봉 연출’", why: "같은 고양이를 찍어도 결과가 다르면 ‘다시 하고 싶어’집니다. 촬영 결과에 가중 랜덤 별점(1~5★)을 주고, 카드가 열리는 순간을 연출해 뽑기의 두근거림을 넣었어요." },
+        { point: "오려낸 사진이 ‘살아있게’ 보이도록 움직임을 넣음", why: "정지된 컷아웃은 스티커 같아서 금방 질립니다. 지면을 배회하고 통통 튀고 그림자·좌우 기울임을 더해, 정적인 사진 한 장이 ‘내 마을에 사는 주민’처럼 느껴지게 했어요." },
+        { point: "성공을 ‘다운로드 수’가 아니라 ‘다시 하고 싶은가’로", why: "초기엔 서버도 계정도 없으니 화려한 지표 대신, 첫 촬영→마을 배치 완료율과 소규모 유저의 재방문·재미를 핵심으로 봤습니다. 재미가 증명돼야 네이티브로 갈 이유가 생기니까요." }
+      ],
+      jp: [
+        { point: "ネイティブアプリではなく『ウェブ(PWA)』で先に", why: "核心の面白さが検証されていない段階でアプリストアや有料アカウントに投資するのは危険です。iOSは無料でQRアプリ設置ができない制約もありました。そこでQR→ブラウザ→ホーム画面追加でiOS・Android同時に動くPWAとして、運営費0円から仮説の検証を始めることにしました。" },
+        { point: "背景除去を『真っ先に』検証した", why: "『写真から被写体だけを切り抜く』がこのゲームの心臓ですが、ブラウザでそれが速く綺麗にできるかが最大のリスクでした。だから企画を広げる前に、オンデバイス(ブラウザ内)背景除去から実験して『できる』を確認し、次へ進みました。" },
+        { point: "写真はすべて端末にだけ保存 (完全ローカル)", why: "他人のペット、時には人まで撮るゲームなので、写真はすなわち個人情報です。サーバーに送らず端末(ブラウザ)内だけに保存し、プライバシー負担とサーバー費用を同時になくしました。" },
+        { point: "クラウドバックアップを『運営者も開けない』方式で", why: "完全ローカルは機種変更で村を失います。そこでバックアップを追加しつつ、自分で決めたPINで端末間暗号化して保存しました。PINなしでは運営者である私たちさえ開けません——利便性とプライバシーの両立を狙った折衷です。" },
+        { point: "ポケモンカードのような『ランダム星評価 + 開封演出』", why: "同じ猫を撮っても結果が違えば『もう一度やりたく』なります。撮影結果に加重ランダムの星評価(1~5★)を与え、カードが開く瞬間を演出してガチャのドキドキを入れました。" },
+        { point: "切り抜いた写真が『生きて』見えるよう動きを追加", why: "静止した切り抜きはステッカーのようで飽きます。地面を歩き回り、ぴょんと跳ね、影・左右の傾きを加えて、静止した一枚の写真が『自分の村に住む住民』のように感じられるようにしました。" },
+        { point: "成功を『ダウンロード数』ではなく『また遊びたいか』で", why: "初期はサーバーもアカウントもないので、派手な指標の代わりに、初回撮影→村への配置の完了率と、少人数ユーザーの再訪問・面白さを核心に置きました。面白さが証明されて初めてネイティブへ進む理由が生まれるからです。" }
+      ]
+    },
+    screens: {
+      ko: [
+        { s: "cv-onboarding", img: "images/pasyamon-onboarding.png", cap: "로그인 없이 마을 이름·테마만 정하면 시작 (숲/거친/눈)" },
+        { s: "cv-village", img: "images/pasyamon-village.png", cap: "내가 포획한 생명체들이 배회하는 마을 — 실제 앱은 직접 찍은 사진이 주민이 됨" },
+        { s: "cv-capture", img: "images/pasyamon-capture.png", cap: "촬영→배경 제거→카드 개봉. 가중 랜덤 별점과 등급 연출" },
+        { s: "cv-collection", img: "images/pasyamon-collection.png", cap: "도감/컬렉션 — 등급 필터·정렬로 모은 카드 모아보기" },
+        { s: "cv-detail", img: "images/pasyamon-detail.png", cap: "카드 상세 — 이름·특징·별점, 편집 가능" }
+      ],
+      jp: [
+        { s: "cv-onboarding", img: "images/pasyamon-onboarding.png", cap: "ログインなしで村名・テーマを決めるだけで開始 (森/荒野/雪)" },
+        { s: "cv-village", img: "images/pasyamon-village.png", cap: "捕獲した生き物が歩き回る村 — 実際のアプリは自分で撮った写真が住民になる" },
+        { s: "cv-capture", img: "images/pasyamon-capture.png", cap: "撮影→背景除去→カード開封。加重ランダムの星評価と等級演出" },
+        { s: "cv-collection", img: "images/pasyamon-collection.png", cap: "図鑑/コレクション — 等級フィルター・並べ替えで集めたカードを一覧" },
+        { s: "cv-detail", img: "images/pasyamon-detail.png", cap: "カード詳細 — 名前・特徴・星評価、編集可能" }
+      ]
+    },
+    roadmap: {
+      note: {
+        ko: "지금은 웹 PWA로 ‘핵심 루프가 재미있는가’를 검증하는 단계이고, 아래는 검증을 통과하면 진행할 계획입니다.",
+        jp: "今はウェブPWAで『核心ループが面白いか』を検証する段階で、下は検証を通過したら進める計画です。"
+      },
+      items: {
+        ko: ["Unity 네이티브 이전 (iOS Vision·App Store 출시)", "🌊 바다 테마 추가", "소규모 실사용자 리텐션·재미 검증"],
+        jp: ["Unityネイティブ移行 (iOS Vision・App Storeリリース)", "🌊 海テーマ追加", "少人数の実ユーザーによるリテンション・面白さ検証"]
+      }
+    },
+    meta: {
+      platform: { ko: "웹 (PWA · 모바일, QR 배포)", jp: "ウェブ (PWA・モバイル、QR配布)" },
+      stack: "PWA · @imgly 온디바이스 배경제거 · IndexedDB · Supabase(암호화 백업)",
+      statusText: { ko: "프로토타입 · 핵심 루프 동작", jp: "プロトタイプ・コアループ稼働" }
+    },
+    links: [
+      { label: { ko: "곧 배포 예정", jp: "近日公開予定" }, url: "#", disabled: true },
+    ]
+  },
 ];
 
 /* =========================================================
    렌더링
    ========================================================= */
-let lang = localStorage.getItem("works_lang") || "ko";
+let lang = localStorage.getItem("works_lang") || "jp";
 const t = (o) => (o && o[lang] != null ? o[lang] : o && o.ko) || "";
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 function phone(screenKey, imgSrc) {
-  const inner = imgSrc
-    ? `<img class="ph-img" src="${imgSrc}" alt="" />`
-    : (SCREENS[screenKey] || "");
-  return `<div class="phone"><div class="phone-notch"></div><div class="phone-scr">${inner}</div></div>`;
+  const mock = SCREENS[screenKey] || "";
+  // 실제 스크린샷(imgSrc)이 있으면 목업 위에 덮어 표시하고,
+  // 파일이 아직 없으면 onerror로 이미지를 제거해 자동으로 목업 폴백.
+  const img = imgSrc ? `<img class="ph-img" src="${imgSrc}" alt="" onerror="this.remove()" />` : "";
+  return `<div class="phone"><div class="phone-notch"></div><div class="phone-scr">${mock}${img}</div></div>`;
 }
 
 /* ---------- 갤러리 ---------- */
