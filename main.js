@@ -462,7 +462,7 @@ const PROJECTS = [
     },
     meta: {
       platform: { ko: "웹 (PWA · 모바일, QR 배포)", jp: "ウェブ (PWA・モバイル、QR配布)" },
-      stack: "PWA · @imgly 온디바이스 배경제거 · IndexedDB · Supabase(암호화 백업)",
+      stack: { ko: "PWA · @imgly 온디바이스 배경제거 · IndexedDB · Supabase(암호화 백업)", jp: "PWA · @imgly オンデバイス背景除去 · IndexedDB · Supabase(暗号化バックアップ)" },
       statusText: { ko: "프로토타입 · 핵심 루프 동작", jp: "プロトタイプ・コアループ稼働" }
     },
     links: [
@@ -567,7 +567,7 @@ function detailHTML(p) {
         </div>
         <dl class="detail-meta">
           <div><dt>${t(I18N["detail.platform"])}</dt><dd>${t(p.meta.platform)}</dd></div>
-          <div><dt>${t(I18N["detail.stack"])}</dt><dd>${esc(p.meta.stack)}</dd></div>
+          <div><dt>${t(I18N["detail.stack"])}</dt><dd>${esc(typeof p.meta.stack === "string" ? p.meta.stack : t(p.meta.stack))}</dd></div>
           <div><dt>${t(I18N["detail.status"])}</dt><dd>${t(p.meta.statusText)}</dd></div>
         </dl>
       </header>
