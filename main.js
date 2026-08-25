@@ -394,7 +394,7 @@ const PROJECTS = [
       statusText: { ko: "MVP 핵심 흐름 동작 중", jp: "MVPコア機能 稼働中" }
     },
     links: [
-      { label: { ko: "웹 공유 뷰", jp: "ウェブ共有ビュー" }, url: "#", disabled: true },
+      { label: { ko: "라이브 데모 ↗", jp: "ライブデモ ↗" }, url: "https://bookyhb-app.vercel.app", primary: true },
     ]
   },
   {
@@ -466,7 +466,7 @@ const PROJECTS = [
       statusText: { ko: "프로토타입 · 핵심 루프 동작", jp: "プロトタイプ・コアループ稼働" }
     },
     links: [
-      { label: { ko: "곧 배포 예정", jp: "近日公開予定" }, url: "#", disabled: true },
+      { label: { ko: "라이브 데모 ↗", jp: "ライブデモ ↗" }, url: "https://pasyamon.vercel.app", primary: true },
     ]
   },
 ];
